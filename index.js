@@ -3,6 +3,7 @@ const app = express();
 const path = require('path');
 const { connectMongoDB } = require('./connection');
 const urlRouter = require('./routes/url');
+const staticRouter = require('./routes/staticRouter');
 const Url = require('./models/url');
 
 // config
@@ -18,18 +19,13 @@ connectMongoDB('mongodb://127.0.0.1:27017/short-url')
 
 // middlewares
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 // routes
 app.use('/url', urlRouter);
+app.use('/', staticRouter);
 // set view engine
 app.set('view engine', 'ejs');
 app.set('views', path.resolve('./views'));
-
-app.get('/test', async (req, res) => {
-    const allUrls = await Url.find({});
-    return res.render('home', {
-        urls: allUrls
-    });
-})
 
 // dynamic route
 app.get('/url/:shortId', async (req, res) => {
