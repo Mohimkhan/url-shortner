@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 const { connectMongoDB } = require('./connection');
 const urlRouter = require('./routes/url');
 const Url = require('./models/url');
@@ -19,9 +20,19 @@ connectMongoDB('mongodb://127.0.0.1:27017/short-url')
 app.use(express.json());
 // routes
 app.use('/url', urlRouter);
+// set view engine
+app.set('view engine', 'ejs');
+app.set('views', path.resolve('./views'));
+
+app.get('/test', async (req, res) => {
+    const allUrls = await Url.find({});
+    return res.render('home', {
+        urls: allUrls
+    });
+})
 
 // dynamic route
-app.get('/:shortId', async (req, res) => {
+app.get('/url/:shortId', async (req, res) => {
     const shortId = req.params.shortId;
     const entry = await Url.findOneAndUpdate({
         shortId,
