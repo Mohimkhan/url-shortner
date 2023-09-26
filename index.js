@@ -21,10 +21,10 @@ app.use(express.json());
 app.use('/url', urlRouter);
 
 // dynamic route
-app.get('/:shortid', async (req, res) => {
-    const shortid = req.params.shortid;
+app.get('/:shortId', async (req, res) => {
+    const shortId = req.params.shortId;
     const entry = await Url.findOneAndUpdate({
-        shortid,
+        shortId,
     }, {
         $push: {
             visitHistory: {
@@ -32,7 +32,6 @@ app.get('/:shortid', async (req, res) => {
             }
         }
     })
-
     res.redirect(entry.redirectUrl);
 })
 
