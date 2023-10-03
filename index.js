@@ -4,10 +4,13 @@ const path = require('path');
 const { connectMongoDB } = require('./connection');
 const urlRouter = require('./routes/url');
 const staticRouter = require('./routes/staticRouter');
+const userRouter = require('./routes/user');
 const Url = require('./models/url');
+const { restrictToLoggedInUserOnly, checkAuth } = require('./middlewares/auth');
+const cookieParser = require('cookie-parser');
 
 // config
-const PORT = 8080;
+const PORT = 8000;
 
 // connect mongo db
 connectMongoDB('mongodb://127.0.0.1:27017/short-url')
@@ -20,9 +23,11 @@ connectMongoDB('mongodb://127.0.0.1:27017/short-url')
 // middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser())
 // routes
-app.use('/url', urlRouter);
-app.use('/', staticRouter);
+app.use('/url', restrictToLoggedInUserOnly, urlRouter);
+app.use('/', checkAuth, staticRouter);
+app.use('/user', userRouter);
 // set view engine
 app.set('view engine', 'ejs');
 app.set('views', path.resolve('./views'));
