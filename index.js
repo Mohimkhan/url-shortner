@@ -23,6 +23,7 @@ connectMongoDB('mongodb://127.0.0.1:27017/short-url')
 // middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(express.static('public'))
 app.use(cookieParser())
 app.use(checkForAuthentication);
 // routes
