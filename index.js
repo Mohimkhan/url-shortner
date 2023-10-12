@@ -6,7 +6,7 @@ const urlRouter = require('./routes/url');
 const staticRouter = require('./routes/staticRouter');
 const userRouter = require('./routes/user');
 const Url = require('./models/url');
-const { restrictToLoggedInUserOnly, checkAuth } = require('./middlewares/auth');
+const { restrictTo, checkForAuthentication } = require('./middlewares/auth');
 const cookieParser = require('cookie-parser');
 
 // config
@@ -24,9 +24,10 @@ connectMongoDB('mongodb://127.0.0.1:27017/short-url')
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser())
+app.use(checkForAuthentication);
 // routes
-app.use('/url', restrictToLoggedInUserOnly, urlRouter);
-app.use('/', checkAuth, staticRouter);
+app.use('/url', restrictTo(['NORMAL', 'ADMIN']), urlRouter);
+app.use('/', staticRouter);
 app.use('/user', userRouter);
 // set view engine
 app.set('view engine', 'ejs');
