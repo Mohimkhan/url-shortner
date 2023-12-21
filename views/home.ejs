@@ -6,44 +6,72 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
+    <!-- fontawesome  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/home.css">
 </head>
 
 <body>
-    <h1>Url shortener</h1>
-    <% if (locals.id) { %>
-        <p>Url Generate: http://localhost:8000/url/<%= id %>
-        </p>
-        <% } %>
-            <div>
-                <form method="POST" action="/url">
-                    <label>Enter Your Orginal Url</label>
-                    <input type="text" name="url" placeholder="https://example.com">
-                    <button type="submit">Generate</button>
-                </form>
-            </div>
+    <header>
+        <div class="logo">
+            <p>TinyWoW</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="" class="logoutBtn">Logout <i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
+                <li><a href="" class="signUpBtn">SignUp <i class="fa-solid fa-user-plus"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1 class="heading">Url shortener :)</h1>
+        <h4>Start your journey by shorting the urls and enter to a new dimension</h4>
+        <% if (locals.id) { %>
+            <p>Url Generate: http://localhost:8000/url/<%= id %>
+            </p>
+            <% } %>
+                <div class="wrapper">
+                    <p>Enter Your Orginal Url</p>
+                    <form method="POST" action="/url">
+                        <div>
+                            <i class="fa-solid fa-link"></i>
+                            <input type="text" name="url" placeholder="https://www.example.com" class="inputLink">
+                        </div>
+                        <button type="submit">Generate</button>
+                    </form>
+                </div>
 
-            <div>
-                <% if (locals.urls) { %>
-                    <table>
-                        <thead>
-                            <th>S. no</th>
-                            <th>ShortId</th>
-                            <th>Redirect</th>
-                            <th>Clicks</th>
-                        </thead>
-                        <tbody>
-                            <% urls.forEach((url, index) => { %>
-                                <tr>
-                                    <td><%= index + 1 %></td>
-                                    <td><%= url.shortId %></td>
-                                    <td><%= url.redirectUrl %></td>
-                                    <td><%= url.visitHistory.length %></td>
-                                </tr>
-                            <% }) %>
-                        </tbody>
-                    </table>
-                    <% } %>
-            </div>
+                <div class="shortLinks-container">
+                    <% if (locals.urls) { %>
+                            <div class="headings">
+                                <h4>S. no</h4>
+                                <h4>Short Link</h4>
+                                <h4>Original Link</h4>
+                                <h4>Clicks</h4>
+                            </div>
+                            <% urls.forEach((url, index)=> { %>
+                                <div class="content">
+                                    <p>
+                                        <%= index + 1 %>
+                                    </p>
+                                    <p>
+                                        <%= url.shortId %>
+                                    </p>
+                                    <p>
+                                        <%= url.redirectUrl %>
+                                    </p>
+                                    <p>
+                                        <%= url.visitHistory.length %>
+                                    </p>
+                                    </tr>
+                                </div>
+                                <% }) %>
+                        <% } %>
+                </div>
+    </main>
 </body>
 
 </html>
