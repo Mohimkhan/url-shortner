@@ -24,12 +24,33 @@ async function handleUserLogin(req, res) {
     })
 
     const token = setUser(user);
-    res.cookie('token', token);
+    const options = {
+        httpOnly: true,
+        secure: true
+    }
+    res.cookie('token', token, options);
     return res.redirect('/');
 }
 
+async function handleUserLogout (req, res) {
+    const tokenValue = req.cookies?.token;
+
+    if (!tokenValue) return res.redirect('/login');
+
+    const options = {
+        httpOnly: true,
+        secure: true
+    }
+
+    res.clearCookie('token', options);
+
+    return res.redirect('/login');
+}
+
+
 module.exports = {
     handleUserSignup,
-    handleUserLogin
+    handleUserLogin,
+    handleUserLogout
 
 }
