@@ -3,6 +3,14 @@ body {
    color: white;
 }
 
+.logo a {
+   font-weight: bold;
+   background-image: linear-gradient(to right, #3a4ed1, #cd5396);
+   -webkit-background-clip: text;
+   background-clip: text;
+   color: transparent;
+}
+
 header {
    display: flex;
    justify-content: space-between;
@@ -26,15 +34,16 @@ nav > ul {
 }
 
 .heading {
-   font-size: 30px;
-   background: linear-gradie nt(to right, #3a4ed1, #cd5396);
-   -webkit-text-fill-color: transparent;
+   font-size: 35px;
+   background-image: linear-gradient(to right, #3a4ed1, #cd5396);
    -webkit-background-clip: text;
+   background-clip: text;
+   color: transparent;
 }
 
 @media only screen and (min-width: 800px) {
    .heading {
-      font-size: 45px;
+      font-size: 50px;
    }
 }
 
@@ -68,6 +77,7 @@ main {
    padding: 1rem 2rem;
    margin: 0 auto;
    gap: 2.5rem;
+   margin-top: 3rem;
 }
 
 .wrapper {
