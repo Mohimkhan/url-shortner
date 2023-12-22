@@ -5,26 +5,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/login.css">
     <title>Login</title>
 </head>
 
 <body>
-    <h1>Login</h1>
-    <div>
-        <form action="/user/login" method="POST">
-            <label>Enter Your Email</label>
-            <input type="email" name="email">
-            <label>Enter Your Password</label>
-            <input type="password" name="password">
-
-            <button type="submit">login</button>
-        </form>
-    </div>
-
-    <div>
-        <% if (locals.error) { %>
-            <p><%= error %></p>
-        <% } %>
+    <div class="container">
+        <div class="wrapper">
+            <div class="sub-container">
+                <div class="coast">
+                  <div class="wave-rel-wrap">
+                    <div class="wave"></div>
+                  </div>
+                </div>
+                <div class="coast delay">
+                  <div class="wave-rel-wrap">
+                    <div class="wave delay"></div>
+                  </div>
+                </div>
+                <div class="text text-l">L</div>
+                <div class="text text-o">o</div>
+                <div class="text text-g">g</div>
+                <div class="text text-i">i</div>
+                <div class="text text-n">n</div>
+                <div class="text text-love">&hearts;</div>
+              </div>
+            <form action="/user/login" method="POST" id="loginForm">
+                <label><i class="fa-regular fa-envelope"></i>Enter Your Email</label>
+                <input type="email" name="email" placeholder="Enter your email" required>
+                <label><i class="fa-solid fa-lock"></i> Enter Your Password</label>
+                <input type="password" name="password" placeholder="Enter your password" required>
+                <button type="submit"><i class="fa-solid fa-right-to-bracket"></i> login</button>
+                <p>Don't have any account then <a href="/signup">Signup</a></p>
+            </form>
+        </div>
+        <div>
+            <% if (locals.error) { %>
+                <p>
+                    <%= error %>
+                </p>
+                <% } %>
+        </div>
     </div>
 </body>
 
