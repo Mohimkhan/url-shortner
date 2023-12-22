@@ -1,0 +1,40 @@
+*,
+*::before,
+*::after {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+:root {
+   --clr-signup-btn: #6f11f5;
+   /* --base-ff:; */
+   --textDur: 1050ms;
+   --waveDur: 2100ms;
+   --base-fs: 1.6rem;
+}
+
+html {
+   font-size: 62.5%;
+   scroll-behavior: smooth;
+   scroll-padding-top: 3rem;
+}
+
+body {
+   font-size: var(--base-fs);
+   letter-spacing: 0.5ch;
+}
+
+a {
+   text-decoration: none;
+}
+
+button {
+   border: none;
+   outline: none;
+}
+
+ul,
+ol {
+   list-style: none;
+}
