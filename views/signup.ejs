@@ -2,26 +2,52 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SignUp</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SignUp</title>
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/signup.css">
 </head>
 
 <body>
-    <h1>Signup</h1>
-    <div>
-        <form action="/user" method="POST">
-            <label>Full Name:</label>
-            <input type="text" name="name">
-            <label>Email:</label>
-            <input type="email" name="email">
-            <label>Password:</label>
-            <input type="password" name="password">
-
-            <button type="submit">signup</button>
-        </form>
+  <div class="container">
+    <div class="sub-container">
+      <div class="coast">
+        <div class="wave-rel-wrap">
+          <div class="wave"></div>
+        </div>
+      </div>
+      <div class="coast delay">
+        <div class="wave-rel-wrap">
+          <div class="wave delay"></div>
+        </div>
+      </div>
+      <div class="text text-s">S</div>
+      <div class="text text-i">i</div>
+      <div class="text text-g">g</div>
+      <div class="text text-n">n</div>
+      <div class="text text-u">U</div>
+      <div class="text text-p">p</div>
+      <div class="text text-love">&hearts;</div>
     </div>
+    <form action="/user" method="POST" id="signupForm">
+      <label><i class="fa-regular fa-user"></i> Full Name:</label>
+      <input type="text" name="name" placeholder="Enter your username" required>
+      <label><i class="fa-regular fa-envelope"></i> Email:</label>
+      <input type="email" name="email" placeholder="Enter your email" required>
+      <label><i class="fa-solid fa-lock"></i> Password:</label>
+      <input type="password" name="password" placeholder="Enter your password" required>
+
+      <button type="submit"><i class="fa-solid fa-right-to-bracket"></i> Sign Up</button>
+
+      <p>Already have a account then <a href="http://localhost:8000/login">login</a></p>
+    </form>
+  </div>
 </body>
 
 </html>
