@@ -1,0 +1,28 @@
+/* some messy css code {overwritting some css of home.css} */
+.redirectUrl,
+.user-name {
+   display: block !important;
+}
+
+.users {
+   min-width: 130px;
+}
+
+.user-details {
+   min-width: 130px;
+}
+
+
+.links {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+}
+
+.link-details {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   border-bottom: 0.1em solid grey;
+   padding: 1rem 0;
+}
