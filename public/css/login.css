@@ -75,6 +75,12 @@ label {
    gap: 2rem;
 }
 
+.error {
+   font-weight: bold;
+   font-size: 18px;
+   color: red;
+}
+
 /* animation */
 .sub-container {
    position: relative;
