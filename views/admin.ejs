@@ -64,7 +64,7 @@
                                 </div>
                                 <% if (entry.userDetails.length > 0) { %>
                                     <div class="links">
-                                        <div class="sheild hidden">
+                                        <div class="shield hidden">
                                             <button type="button" class="btn-more">see more..</button>
                                         </div>
                                         <% entry.userDetails.links.forEach(link => { %>
@@ -83,7 +83,7 @@
                                     </div>
                                 <% } %>
                 
-                                <p><%= entry.email %></p>
+                                <p class="user-email"><%= entry.email %></p>
                             </div>
                         <% }) %>
                     <% } %>
