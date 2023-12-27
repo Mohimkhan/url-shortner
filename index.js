@@ -8,12 +8,15 @@ const userRouter = require('./routes/user');
 const Url = require('./models/url');
 const { restrictTo, checkForAuthentication } = require('./middlewares/auth');
 const cookieParser = require('cookie-parser');
+const dotenv = require('dotenv');
+dotenv.config();
 
 // config
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
+const db_url = process.env.DB_URL;
 
 // connect mongo db
-connectMongoDB('mongodb://127.0.0.1:27017/short-url')
+connectMongoDB(db_url)
     .then(() => {
         console.log(`MongoDB connected...`);
     })
