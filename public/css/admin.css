@@ -12,6 +12,10 @@
    min-width: 130px;
 }
 
+.user-email {
+   min-width: 235px;
+}
+
 .links {
    position: relative;
    display: flex;
@@ -31,7 +35,7 @@
    padding-bottom: 1rem;
 }
 
-.sheild {
+.shield {
    position: absolute;
    right: 0;
    backdrop-filter: blur(1px);
