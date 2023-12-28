@@ -30,7 +30,7 @@
         <h1 class="heading">Shorten Your Loong Links :)</h1>
         <h4>TinyWoW provides the best shortening services</h4>
         <% if (locals.id) { %>
-            <p>Url Generate: http://localhost:8000/url/<%= id %>
+            <p>Url Generate: http://localhost:<%= locals.port %>/url/<%= id %>
             </p>
             <% } %>
                 <div class="wrapper">
@@ -52,24 +52,31 @@
                                 <h4>Original Link</h4>
                                 <h4>Clicks</h4>
                             </div>
-                            <% urls.forEach((url, index)=> { %>
+                            <% if (urls.length > 0) { %>
+                                <% urls.forEach((url, index)=> { %>
+                                    <div class="content">
+                                        <p>
+                                            <%= index + 1 %>
+                                        </p>
+                                        <p class="shortId">
+                                            <%= url.shortId %>
+                                        </p>
+                                        <p>
+                                            <%= url.redirectUrl %>
+                                        </p>
+                                        <p>
+                                            <%= url.visitHistory.length %>
+                                        </p>
+                                        </tr>
+                                    </div>
+                                    <% }) %>
+                            <% } else { %>
                                 <div class="content">
-                                    <p>
-                                        <%= index + 1 %>
-                                    </p>
-                                    <p class="shortId">
-                                        <%= url.shortId %>
-                                    </p>
-                                    <p>
-                                        <%= url.redirectUrl %>
-                                    </p>
-                                    <p>
-                                        <%= url.visitHistory.length %>
-                                    </p>
-                                    </tr>
+                                    <p>No urls details to show, click on generate button to create shortId</p>
                                 </div>
-                                <% }) %>
-                        <% } %>
+                            <% } %>
+                           
+                    <% } %>
                 </div>
     </main>
 </body>
