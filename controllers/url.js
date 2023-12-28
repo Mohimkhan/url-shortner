@@ -1,5 +1,7 @@
 const shortid = require('shortid');
 const Url = require('../models/url')
+const dotenv = require('dotenv');
+dotenv.config();
 
 async function handleGeneratedNewShortUrl(req, res) {
     const body = req.body;
@@ -13,7 +15,8 @@ async function handleGeneratedNewShortUrl(req, res) {
         createdBy: req.user._id,
     })
 
-    return res.render('home', { id: shortID });
+    return res.render('home', { id: shortID,
+    port: process.env.PORT });
 }
 
 async function handleShortIdAnalytics(req, res) {
