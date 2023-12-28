@@ -49,6 +49,14 @@ app.get('/url/:shortId', async (req, res) => {
             }
         }
     })
+
+    // checks if given url has https:// or http:// prefix
+    const urlRegex = /^(https?|http):\/\//i;
+
+    if (!urlRegex.test(entry.redirectUrl)) {
+        return res.redirect(`https://${entry.redirectUrl}`);
+    }
+
     res.redirect(entry.redirectUrl);
 })
 
