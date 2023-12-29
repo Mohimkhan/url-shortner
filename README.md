@@ -16,7 +16,7 @@ A simple and efficient URL shortener project built with [Node.js](https://nodejs
 1.Clone the repository:
 
 ```bash
-git clone https://github.com/Mohimkhan/url-shortener.git
+git clone https://github.com/Mohimkhan/url-shortner.git
 
 ```
 
