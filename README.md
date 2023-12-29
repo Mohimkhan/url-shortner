@@ -26,7 +26,7 @@ Create a .env file in the project root and add the following:
 
 ```bash
 PORT=3000
-MONGO_URL=your_mongodb_uri
+DB_URL=your_mongodb_uri
 SECRET_KEY=your_secret_key
 ```
 
