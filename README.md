@@ -1,6 +1,6 @@
 # URL Shortener
 
-![Url Shortener](./design/desktop-design.png)
+![Url-Shortener-desktop-image-preview](./design/desktop-design.png)
 
 A simple and efficient URL shortener project built with [Node.js](https://nodejs.org/) and [Express](https://expressjs.com/).
 
