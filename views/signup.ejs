@@ -47,6 +47,15 @@
 
       <p>Already have a account then <a href="http://localhost:8000/login">login</a></p>
     </form>
+
+    <div>
+      <br>
+      <% if (locals.error) { %>
+        <p class="error">
+          <%= error %>!!!
+        </p>
+        <% } %>
+    </div>
   </div>
 </body>
 
