@@ -4,6 +4,12 @@ const { setUser } = require('../service/auth');
 async function handleUserSignup(req, res) {
     const { name, email, password } = req.body;
 
+    if ([name, email, password].some((field) => field === undefined)) {
+        return res.render("signup", {
+            error: "All fields should be filled"
+        })
+    }
+
     await User.create({
         name,
         email,
