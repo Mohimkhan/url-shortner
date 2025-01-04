@@ -8,8 +8,6 @@ const userRouter = require("./routes/user");
 const Url = require("./models/url");
 const { restrictTo, checkForAuthentication } = require("./middlewares/auth");
 const cookieParser = require("cookie-parser");
-const dotenv = require("dotenv");
-dotenv.config();
 
 // config
 const PORT = process.env.PORT || 8000;

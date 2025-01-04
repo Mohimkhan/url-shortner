@@ -1,7 +1,5 @@
 const shortid = require('shortid');
 const Url = require('../models/url')
-const dotenv = require('dotenv');
-dotenv.config();
 
 async function handleGeneratedNewShortUrl(req, res) {
     const body = req.body;
