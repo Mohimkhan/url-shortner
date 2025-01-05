@@ -53,6 +53,12 @@ Alternatively, copy the sample file:
    npm run start
    ```
 
+4. To get a development server use, this will listen for your change
+   
+   ```bash
+   npm run dev
+   ```
+
 The application will be accessible at http://localhost:3000
 
 ## Usage
