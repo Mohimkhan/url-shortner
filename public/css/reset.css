@@ -6,6 +6,11 @@
    box-sizing: border-box;
 }
 
+body {
+   background-color: #0b101b;
+   color: white;
+}
+
 :root {
    --clr-signup-btn: #6f11f5;
    /* --base-ff:; */
