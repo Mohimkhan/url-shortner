@@ -1,13 +1,16 @@
 .container {
-   max-width: 700px;
+   position: absolute;
+   max-width: 410px;
    width: 100%;
-   background-color: white;
    display: flex;
    justify-content: center;
    align-items: center;
    flex-direction: column;
-   margin: 11rem auto 0;
+   margin-inline: auto;
    padding: 2.5rem 1.5rem;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
 }
 
 a {
@@ -30,20 +33,22 @@ label {
    justify-content: center;
    align-items: flex-start;
    flex-direction: column;
+   gap: 1rem;
 }
 
 #signupForm input:invalid:not(:placeholder-shown) {
-   outline: 2px solid red;
+   outline: 1px solid red;
 }
 
 #signupForm input:valid:not(:placeholder-shown) {
-   outline: 2px solid rgb(25, 235, 25);
+   outline: 1px solid rgb(25, 235, 25);
 }
 
 #signupForm > input {
    width: 100%;
    margin: 1rem 0;
    padding: 0.5em 0.5em;
+   border-radius: 5px;
 }
 
 #signupForm button[type='submit'] {
@@ -63,14 +68,18 @@ label {
    position: absolute;
    width: 17rem;
    height: 10rem;
-   top: 15px;
-   left: 50%;
-   transform: translateX(-101%);
+   top: -113px;
+   left: 15px;
+}
+
+@media only screen and (min-width: 400px) {
+   .sub-container {
+      left: 27px;
+   }
 }
 
 .text {
-   color: black;
-   font-size: 6rem;
+   font-size: 4rem;
    font-weight: 900;
    display: inline-block;
    position: absolute;
@@ -88,37 +97,37 @@ label {
 }
 
 .text-i {
-   left: 5.4rem;
+   left: 4.5rem;
    -webkit-animation-delay: 150ms;
    animation-delay: 150ms;
 }
 
 .text-g {
-   left: 9.6rem;
+   left: 8rem;
    -webkit-animation-delay: 230ms;
    animation-delay: 230ms;
 }
 
 .text-n {
-   left: 14rem;
+   left: 12.5rem;
    -webkit-animation-delay: 310ms;
    animation-delay: 310ms;
 }
 
 .text-u {
-   left: 19rem;
+   left: 17rem;
    -webkit-animation-delay: 390ms;
    animation-delay: 390ms;
 }
 
 .text-p {
-   left: 23rem;
+   left: 22rem;
    -webkit-animation-delay: 470ms;
    animation-delay: 470ms;
 }
 
 .text-love {
-   left: 27rem;
+   left: 26rem;
    -webkit-animation-delay: 550ms;
    animation-delay: 550ms;
 }

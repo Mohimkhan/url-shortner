@@ -1,13 +1,17 @@
 .container {
+   position: absolute;
    max-width: 700px;
    width: 100%;
-   background-color: white;
+   color: white;
    display: flex;
    justify-content: center;
    align-items: center;
    flex-direction: column;
-   margin: 1rem auto 0;
+   margin-inline: auto;
    padding: 2.5rem 1.5rem;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
 }
 
 a {
@@ -35,17 +39,18 @@ label {
 }
 
 #loginForm input:invalid:not(:placeholder-shown) {
-   outline: 2px solid red;
+   outline: 1px solid red;
 }
 
 #loginForm input:valid {
-   outline: 2px solid rgb(25, 235, 25);
+   outline: 1px solid rgb(25, 235, 25);
 }
 
 #loginForm > input {
    width: 100%;
    margin: 1rem 0;
    padding: 0.5em 0.5em;
+   border-radius: 5px;
 }
 
 #loginForm button[type='submit'] {
@@ -66,12 +71,13 @@ label {
 }
 
 .wrapper {
+   max-width: 410px;
    position: relative;
    display: flex;
    justify-content: center;
    align-items: flex-start;
    flex-direction: column;
-   width: 70%;
+   width: 100%;
    gap: 2rem;
 }
 
@@ -89,7 +95,6 @@ label {
 }
 
 .text {
-   color: black;
    font-size: 6rem;
    font-weight: 900;
    display: inline-block;
