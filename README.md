@@ -10,6 +10,7 @@ A simple and efficient URL shortener project built with [Node.js](https://nodejs
 -  **Shorten URLs:** Easily create short URLs for long links.
 -  **Statistics:** Track the usage and analytics of your short URLs.
 -  **User Authentication:** Secure your URL management with user accounts.
+-  **Admin DashBoard:** Admin can see all the user info and analytic's there
 
 ## Get Started
 
