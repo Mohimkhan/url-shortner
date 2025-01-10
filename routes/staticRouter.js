@@ -39,11 +39,11 @@ router.get('/', async (req, res) => {
     });
 })
 
-router.get('/signup', (req, res) => {
+router.get('/signup', (_, res) => {
     res.render('signup');
 })
 
-router.get('/login', (req, res) => {
+router.get('/login', (_, res) => {
     res.render('login');
 })
 
