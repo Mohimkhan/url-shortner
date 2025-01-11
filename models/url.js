@@ -17,6 +17,9 @@ const urlSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'users'
     },
+    tempUserId: {
+        type: String
+    }
 }, { timestamps: true })
 
 const Url = mongoose.model('url', urlSchema);
