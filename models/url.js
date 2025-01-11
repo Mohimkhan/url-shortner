@@ -18,7 +18,8 @@ const urlSchema = new mongoose.Schema({
         ref: 'users'
     },
     tempUserId: {
-        type: String
+        type: String,
+        unique: true
     }
 }, { timestamps: true })
 
