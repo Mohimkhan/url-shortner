@@ -28,11 +28,13 @@ connectMongoDB(db_url)
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(checkForAuthentication);
+// app.use(checkForAuthentication);
+
 // routes
-app.use("/url", restrictTo(["NORMAL", "ADMIN"]), urlRouter);
+app.use("/url", urlRouter);
 app.use("/", staticRouter);
 app.use("/user", userRouter);
+
 // set view engine
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
