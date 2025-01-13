@@ -1,3 +1,4 @@
+const { options } = require('../constants');
 const User = require('../models/user');
 const { setUser } = require('../service/auth');
 
@@ -43,10 +44,7 @@ async function handleUserLogin(req, res) {
     }
 
     const token = setUser(user);
-    const options = {
-        httpOnly: true,
-        secure: true
-    }
+
     res.cookie('token', token, options);
     return res.redirect('/');
 }
@@ -55,11 +53,6 @@ async function handleUserLogout (req, res) {
     const tokenValue = req.cookies?.token;
 
     if (!tokenValue) return res.redirect('/login');
-
-    const options = {
-        httpOnly: true,
-        secure: true
-    }
 
     res.clearCookie('token', options);
 
