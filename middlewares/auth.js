@@ -1,10 +1,18 @@
 const { getUser } = require('../service/auth');
+const {v4: uuidv4} = require("uuid");
 
-function checkForAuthentication(req, res, next) {
+function checkForAuthentication(req, _, next) {
     const tokenValue = req.cookies?.token;
+    const tempUserId = req.cookies?.tempUserId;
+
     req.user = null;
 
-    if (!tokenValue) return next();
+    if (!tokenValue) {
+        if (!tempUserId) {
+            req.cookies.tempUserId = uuidv4();
+            return next();
+        }
+    };
 
     const user = getUser(tokenValue);
 
