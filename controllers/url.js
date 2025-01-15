@@ -1,5 +1,6 @@
 const shortid = require('shortid');
-const Url = require('../models/url')
+const Url = require('../models/url');
+const { appName } = require('../constants');
 
 async function handleGeneratedNewShortUrl(req, res) {
     const body = req.body;
@@ -7,15 +8,29 @@ async function handleGeneratedNewShortUrl(req, res) {
     if (!body.url) return res.status(400).json({ err: 'url is required' });
     const shortID = shortid();
 
+    if (!req?.user) {
+        await Url.create({
+            shortId: shortID,
+            redirectUrl: body.url,
+            visitHistory: [],
+            tempUserId
+        })
+
+        return res.render('home', { id: shortID,
+        port: process.env.PORT });
+    }
+
     await Url.create({
         shortId: shortID,
         redirectUrl: body.url,
         visitHistory: [],
-        createdBy: req?.user?._id ?? tempUserId,
+        createdBy: req.user._id,
+        tempUserId: null
     })
 
     return res.render('home', { id: shortID,
-    port: process.env.PORT });
+        port: process.env.PORT });
+
 }
 
 async function handleShortIdAnalytics(req, res) {
