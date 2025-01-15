@@ -3,7 +3,7 @@ const { options } = require('../routes/user');
 const { getUser } = require('../service/auth');
 const {v4: uuidv4} = require("uuid");
 
-function checkForAuthentication(req, _, next) {
+function checkForAuthentication(req, res, next) {
     const tokenValue = req.cookies?.[`${appName}-token`];
     const tempUserId = req.cookies?.[`${appName}-tempUserId`];
 
@@ -11,7 +11,7 @@ function checkForAuthentication(req, _, next) {
 
     if (!tokenValue) {
         if (!tempUserId) {
-            req.cookie(`${appName}-tempUserId`, {...options, maxAge: 30 * 24 * 60 * 60 * 1000 }) = uuidv4();
+            res.cookie(`${appName}-tempUserId`, uuidv4(), options);
             return next();
         }
     };
