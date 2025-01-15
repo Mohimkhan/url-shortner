@@ -3,8 +3,10 @@ const options = {
     httpOnly: true,
     secure: true
 }
+const appName = "TinyWoW";
 
 module.exports = {
     saltOrRounds,
-    options
+    options,
+    appName
 }
