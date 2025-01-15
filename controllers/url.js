@@ -3,7 +3,7 @@ const Url = require('../models/url')
 
 async function handleGeneratedNewShortUrl(req, res) {
     const body = req.body;
-    const tempUserId = req.cookies?.tempUserId;
+    const tempUserId = req.cookies?.[`${appName}-tempUserId`];
     if (!body.url) return res.status(400).json({ err: 'url is required' });
     const shortID = shortid();
 
