@@ -1,4 +1,4 @@
-const { options } = require('../constants');
+const { options, appName } = require('../constants');
 const User = require('../models/user');
 const { setUser } = require('../service/auth');
 
@@ -45,16 +45,16 @@ async function handleUserLogin(req, res) {
 
     const token = setUser(user);
 
-    res.cookie('token', token, options);
+    res.cookie(`${appName}-token`, token, options);
     return res.redirect('/');
 }
 
 async function handleUserLogout (req, res) {
-    const tokenValue = req.cookies?.token;
+    const tokenValue = req.cookies?.[`${appName}-token`];
 
     if (!tokenValue) return res.redirect('/login');
 
-    res.clearCookie('token', options);
+    res.clearCookie(`${appName}-token`, options);
 
     return res.redirect('/login');
 }
