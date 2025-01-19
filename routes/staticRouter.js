@@ -3,6 +3,7 @@ const router = express.Router();
 const Url = require('../models/url')
 const { restrictTo } = require('../middlewares/auth');
 const User = require('../models/user');
+const { appName } = require('../constants');
 
 
 router.get('/admin/urls', restrictTo(['ADMIN']), async (req, res) => {
@@ -25,14 +26,18 @@ router.get('/admin/urls', restrictTo(['ADMIN']), async (req, res) => {
 
 router.get('/', async (req, res) => {
     const userId = req?.user?._id;
+    const tempUserId = req.cookies?.[`${appName}-tempUserId`];
+    
 
     if (!userId) {
+        const urls = await Url.find({tempUserId});
+
         return res.render('home', {
-            urls: []
+            urls
         });
     }
 
-    const allUrls = await Url.find({ createdBy: req.user._id });
+    const allUrls = await Url.find({ createdBy: req.user?._id });
 
     res.render('home', {
         urls: allUrls
