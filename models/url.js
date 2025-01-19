@@ -19,7 +19,8 @@ const urlSchema = new mongoose.Schema({
     },
     tempUserId: {
         type: String,
-        unique: true
+        unique: true,
+        default: null
     }
 }, { timestamps: true })
 
