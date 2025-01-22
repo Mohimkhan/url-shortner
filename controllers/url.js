@@ -7,6 +7,17 @@ async function handleGeneratedNewShortUrl(req, res) {
     const tempUserId = req.cookies?.[`${appName}-tempUserId`];
     if (!body.url) return res.status(400).json({ err: 'url is required' });
     const shortID = shortid();
+    let count;
+
+    if (tempUserId) {
+        count = await Url.countDocuments({
+            tempUserId
+        });
+    }
+
+    if (count && count >= 3 && !req?.user) {
+        return res.redirect('/login');
+    }
 
     if (!req?.user) {
         await Url.create({
