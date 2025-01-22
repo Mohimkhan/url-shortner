@@ -1,4 +1,5 @@
 const { options, appName } = require('../constants');
+const Url = require('../models/url');
 const User = require('../models/user');
 const { setUser } = require('../service/auth');
 
@@ -22,6 +23,7 @@ async function handleUserSignup(req, res) {
 
 async function handleUserLogin(req, res) {
     const { email, password } = req.body;
+    const tempUserId = req.cookies[`${appName}-tempUserId`];
 
     if ([email, password].some((field) => field === undefined)) {
         return res.render("login", {
@@ -41,6 +43,11 @@ async function handleUserLogin(req, res) {
         return res.render("login", {
             error: "Invalid password"
         })
+    }
+
+    if (tempUserId) {
+        await Url.updateMany({tempUserId}, {$set: {createdBy: user._id, tempUserId: null}});
+        res.clearCookie(`${appName}-tempUserId`);
     }
 
     const token = setUser(user);
