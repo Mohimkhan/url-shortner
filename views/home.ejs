@@ -51,6 +51,7 @@
                                 <h4 class="shortLink">Short Link</h4>
                                 <h4>Original Link</h4>
                                 <h4>Clicks</h4>
+                                <h4>Actions</h4>
                             </div>
                             <% if (urls.length > 0) { %>
                                 <% urls.forEach((url, index)=> { %>
@@ -61,12 +62,15 @@
                                         <p class="shortId">
                                             <%= url.shortId %>
                                         </p>
-                                        <p>
+                                        <p class="redirectUrl">
                                             <%= url.redirectUrl %>
                                         </p>
                                         <p>
                                             <%= url.visitHistory.length %>
                                         </p>
+                                        <button type="button" id="copyBtn">
+                                            copy
+                                        </button>
                                         </tr>
                                     </div>
                                     <% }) %>
@@ -79,6 +83,7 @@
                     <% } %>
                 </div>
     </main>
+    <script src="/js/home.js"></script>
 </body>
 
 </html>
