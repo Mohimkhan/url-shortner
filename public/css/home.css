@@ -132,6 +132,7 @@ main {
    background-color: #0e131e;
    color: white;
    padding: 1.5rem 1rem;
+   align-items: baseline;
 }
 
 .content p:nth-child(1) {
@@ -224,4 +225,19 @@ form button[type='submit'] {
 
 form button[type='submit']:hover {
    box-shadow: 0px 0px 21px #144de2;
+}
+
+
+#copyBtn {
+   background-color: #144de2;
+   padding: .5rem 1rem;
+   color: white;
+   border-radius: 4px;
+   height: 28px;
+   cursor: pointer;
+}
+
+#copyBtn:hover {
+   scale: .9;
+   opacity: .9;
 }
