@@ -6,4 +6,4 @@ router.post('/signup', handleUserSignup);
 router.post('/login', handleUserLogin);
 router.get('/logout', handleUserLogout);
 
-module.exports = router;
+export default router;

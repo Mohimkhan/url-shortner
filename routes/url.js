@@ -7,4 +7,4 @@ router.post('/', handleGeneratedNewShortUrl);
 router.get('/analytics/:shortId', handleShortIdAnalytics);
 
 
-module.exports = router;
+export default router;

@@ -52,4 +52,4 @@ router.get('/login', (_, res) => {
     res.render('login');
 })
 
-module.exports = router;
+export default router;

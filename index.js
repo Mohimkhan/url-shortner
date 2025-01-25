@@ -1,13 +1,18 @@
-const express = require("express");
+import express from "express";
 const app = express();
-const path = require("path");
-const { connectMongoDB } = require("./connection");
-const urlRouter = require("./routes/url");
-const staticRouter = require("./routes/staticRouter");
-const userRouter = require("./routes/user");
-const Url = require("./models/url");
-const { restrictTo, checkForAuthentication } = require("./middlewares/auth");
-const cookieParser = require("cookie-parser");
+import path from "path";
+import { connectMongoDB } from "./connection.js";
+import urlRouter from "./routes/url.js";
+import staticRouter from "./routes/staticRouter.js";
+import userRouter from "./routes/user.js";
+import Url from "./models/url.js";
+import { restrictTo, checkForAuthentication } from "./middlewares/auth.js";
+import cookieParser from "cookie-parser";
+
+/**
+ * * Login route should convert the tempUserId to actual Id
+ * * Make the home page ui for responsive and accessiable
+ */
 
 // config
 const PORT = process.env.PORT || 8000;
