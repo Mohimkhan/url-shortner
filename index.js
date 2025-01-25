@@ -5,20 +5,19 @@ import urlRouter from "./routes/url.js";
 import staticRouter from "./routes/staticRouter.js";
 import userRouter from "./routes/user.js";
 import Url from "./models/url.js";
-import { restrictTo, checkForAuthentication } from "./middlewares/auth.js";
+import { checkForAuthentication } from "./middlewares/auth.js";
 import cookieParser from "cookie-parser";
 import { fileURLToPath } from "url";
 
 /**
  * * Login route should convert the tempUserId to actual Id
  * * Make the home page ui for responsive and accessiable
-*/
+ */
 
 // config
 const PORT = process.env.PORT || 8000;
 const db_url = process.env.DB_URL;
 const app = express();
-
 
 // define __dirname
 const __filename = fileURLToPath(import.meta.url);
