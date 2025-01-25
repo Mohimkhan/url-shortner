@@ -1,5 +1,4 @@
 import express from "express";
-const app = express();
 import path from "path";
 import { connectMongoDB } from "./connection.js";
 import urlRouter from "./routes/url.js";
@@ -8,15 +7,22 @@ import userRouter from "./routes/user.js";
 import Url from "./models/url.js";
 import { restrictTo, checkForAuthentication } from "./middlewares/auth.js";
 import cookieParser from "cookie-parser";
+import { fileURLToPath } from "url";
 
 /**
  * * Login route should convert the tempUserId to actual Id
  * * Make the home page ui for responsive and accessiable
- */
+*/
 
 // config
 const PORT = process.env.PORT || 8000;
 const db_url = process.env.DB_URL;
+const app = express();
+
+
+// define __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // connect mongo db
 connectMongoDB(db_url)

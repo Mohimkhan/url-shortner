@@ -1,60 +1,55 @@
-const shortid = require('shortid');
-const Url = require('../models/url');
-const { appName } = require('../constants');
+import shortid from "shortid";
+import Url from "../models/url.js";
+import { appName } from "../constants/index.js";
 
-async function handleGeneratedNewShortUrl(req, res) {
-    const body = req.body;
-    const tempUserId = req.cookies?.[`${appName}-tempUserId`];
-    if (!body.url) return res.status(400).json({ err: 'url is required' });
-    const shortID = shortid();
-    let count;
+export async function handleGeneratedNewShortUrl(req, res) {
+  const body = req.body;
+  const tempUserId = req.cookies?.[`${appName}-tempUserId`];
+  if (!body.url) return res.status(400).json({ err: "url is required" });
+  const shortID = shortid();
+  let count;
 
-    if (tempUserId) {
-        count = await Url.countDocuments({
-            tempUserId
-        });
-    }
+  if (tempUserId) {
+    count = await Url.countDocuments({
+      tempUserId,
+    });
+  }
 
-    if (count && count >= 3 && !req?.user) {
-        return res.redirect('/login');
-    }
+  if (count && count >= 3 && !req?.user) {
+    return res.redirect("/login");
+  }
 
-    if (!req?.user) {
-        await Url.create({
-            shortId: shortID,
-            redirectUrl: body.url,
-            visitHistory: [],
-            tempUserId
-        })
-
-        return res.render('home', { id: shortID,
-        port: process.env.PORT });
-    }
-
+  if (!req?.user) {
     await Url.create({
-        shortId: shortID,
-        redirectUrl: body.url,
-        visitHistory: [],
-        createdBy: req.user._id,
-        tempUserId: null
-    })
-
-    return res.render('home', { id: shortID,
-        port: process.env.PORT });
-
-}
-
-async function handleShortIdAnalytics(req, res) {
-    const shortId = req.params.shortId;
-
-    const result = await Url.findOne({
-        shortId
+      shortId: shortID,
+      redirectUrl: body.url,
+      visitHistory: [],
+      tempUserId,
     });
 
-    res.status(200).json({ clicks: result.visitHistory.length, timestamps: result.visitHistory });
+    return res.render("home", { id: shortID, port: process.env.PORT });
+  }
+
+  await Url.create({
+    shortId: shortID,
+    redirectUrl: body.url,
+    visitHistory: [],
+    createdBy: req.user._id,
+    tempUserId: null,
+  });
+
+  return res.render("home", { id: shortID, port: process.env.PORT });
 }
 
-module.exports = {
-    handleGeneratedNewShortUrl,
-    handleShortIdAnalytics
+export async function handleShortIdAnalytics(req, res) {
+  const shortId = req.params.shortId;
+
+  const result = await Url.findOne({
+    shortId,
+  });
+
+  res.status(200).json({
+    clicks: result.visitHistory.length,
+    timestamps: result.visitHistory,
+  });
 }
