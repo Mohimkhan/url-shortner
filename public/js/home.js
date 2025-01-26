@@ -10,8 +10,10 @@ shortLinksContainer.addEventListener("click", (event) => {
     navigator.clipboard.writeText(shortUrl);
     // change the button text
     btn.textContent = "copied!";
+    btn.style.opacity = ".75";
     setTimeout(() => {
       btn.textContent = "copy";
+      btn.style.opacity = "1";
     }, 2000);
   }
 });
