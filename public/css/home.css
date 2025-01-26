@@ -228,7 +228,7 @@ form button[type='submit']:hover {
 }
 
 
-#copyBtn {
+.copyBtn {
    background-color: #144de2;
    padding: .5rem 1rem;
    color: white;
@@ -237,7 +237,7 @@ form button[type='submit']:hover {
    cursor: pointer;
 }
 
-#copyBtn:hover {
+.copyBtn:hover {
    scale: .9;
    opacity: .9;
 }
