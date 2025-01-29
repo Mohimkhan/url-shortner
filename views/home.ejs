@@ -30,8 +30,9 @@
         <h1 class="heading">Shorten Your Looong Links :)</h1>
         <h4>TinyWoW provides the best shortening services</h4>
         <% if (locals.id) { %>
-            <p>Url Generated: http://localhost:<%= locals.port %>/url/<%= id %>
-            </p>
+            <p>Url Generated: <a href="<%= locals.path %>/<%= locals.id %>" target="_blank" class="shortLink">
+                    <%= locals.path %>/<%= locals.id %>
+                </a></p>
             <% } %>
                 <div class="wrapper">
                     <p>Enter Your Orginal URL</p>
