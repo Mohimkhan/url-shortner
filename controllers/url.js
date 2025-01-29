@@ -27,7 +27,9 @@ export async function handleGeneratedNewShortUrl(req, res) {
       tempUserId,
     });
 
-    return res.render("home", { id: shortID, port: process.env.PORT });
+    const path = `${req.protocol}://${req.get("host")}/url`;
+
+    return res.render("home", { id: shortID, path: path });
   }
 
   await Url.create({
