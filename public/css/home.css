@@ -243,7 +243,7 @@ form button[type='submit']:hover {
    opacity: .9;
 }
 
-.shortLink {
+.redirectUrlLink {
    text-decoration: underline;
    cursor: pointer;
 }
