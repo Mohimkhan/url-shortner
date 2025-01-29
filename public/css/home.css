@@ -242,3 +242,8 @@ form button[type='submit']:hover {
    scale: .9;
    opacity: .9;
 }
+
+.shortLink {
+   text-decoration: underline;
+   cursor: pointer;
+}
