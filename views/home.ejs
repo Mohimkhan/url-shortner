@@ -21,7 +21,10 @@
         </div>
         <nav>
             <ul>
-                <li><a href="/user/logout" class="logoutBtn">Logout <i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
+                <li><a href="/user/logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
+                <li><a href="/signup"><i class="fa-solid fa-user-plus"></i></a></li>
+                <li><a href="/user/logout" class="logoutBtn">Logout <i
+                            class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
                 <li><a href="/signup" class="signUpBtn">SignUp <i class="fa-solid fa-user-plus"></i></a></li>
             </ul>
         </nav>
@@ -47,41 +50,42 @@
 
                 <div class="shortLinks-container">
                     <% if (locals.urls) { %>
-                            <div class="headings">
-                                <h4>S. no</h4>
-                                <h4 class="shortLink">Short Link</h4>
-                                <h4>Original Link</h4>
-                                <h4>Clicks</h4>
-                                <h4>Actions</h4>
-                            </div>
-                            <% if (urls.length > 0) { %>
-                                <% urls.forEach((url, index)=> { %>
-                                    <div class="content">
-                                        <p>
-                                            <%= index + 1 %>
-                                        </p>
-                                        <p class="shortId">
-                                            <%= url.shortId %>
-                                        </p>
-                                        <p class="redirectUrl">
-                                            <%= url.redirectUrl %>
-                                        </p>
-                                        <p>
-                                            <%= url.visitHistory.length %>
-                                        </p>
-                                        <button type="button" class="copyBtn">
-                                            copy
-                                        </button>
-                                        </tr>
-                                    </div>
-                                    <% }) %>
-                            <% } else { %>
+                        <div class="headings">
+                            <h4>S. no</h4>
+                            <h4 class="shortLink">Short Link</h4>
+                            <h4>Original Link</h4>
+                            <h4>Clicks</h4>
+                            <h4>Actions</h4>
+                        </div>
+                        <% if (urls.length> 0) { %>
+                            <% urls.forEach((url, index)=> { %>
                                 <div class="content">
-                                    <p>Login or Create urls to show, click on generate button to create shortId</p>
+                                    <p>
+                                        <%= index + 1 %>
+                                    </p>
+                                    <p class="shortId">
+                                        <%= url.shortId %>
+                                    </p>
+                                    <p class="redirectUrl">
+                                        <%= url.redirectUrl %>
+                                    </p>
+                                    <p>
+                                        <%= url.visitHistory.length %>
+                                    </p>
+                                    <button type="button" class="copyBtn">
+                                        copy
+                                    </button>
+                                    </tr>
                                 </div>
-                            <% } %>
-                           
-                    <% } %>
+                                <% }) %>
+                                    <% } else { %>
+                                        <div class="content">
+                                            <p>Login or Create urls to show, click on generate button to create shortId
+                                            </p>
+                                        </div>
+                                        <% } %>
+
+                                            <% } %>
                 </div>
     </main>
     <script src="/js/home.js"></script>
