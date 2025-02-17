@@ -28,6 +28,21 @@ nav > ul {
    gap: 3rem;
 }
 
+/* hide evey li element except the first 2 element */
+nav > ul > li:not(:nth-child(-n + 2)) { 
+   display: none;
+}
+
+@media only screen and (min-width: 530px) {
+   nav > ul > li:nth-child(-n + 2) { 
+      display: none;
+   }
+
+   nav > ul > li:not(:nth-child(-n + 2)) { 
+      display: block;
+   }
+}
+
 .heading {
    font-size: 35px;
    background-image: linear-gradient(to right, #3a4ed1, #cd5396);
