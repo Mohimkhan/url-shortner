@@ -25,7 +25,7 @@ nav > ul {
    justify-content: flex-end;
    align-items: center;
    flex-wrap: wrap;
-   gap: 3rem;
+   gap: 2rem;
 }
 
 /* hide evey li element except the first 2 element */
