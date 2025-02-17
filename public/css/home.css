@@ -148,6 +148,13 @@ main {
    overflow-x: scroll;
 }
 
+.redirectUrl {
+   width: 100%;
+   text-overflow: ellipsis;
+   overflow: hidden;
+   white-space: nowrap;
+}
+
 @media only screen and (min-width: 768px) {
    .headings h4:nth-child(1) {
       display: block;
