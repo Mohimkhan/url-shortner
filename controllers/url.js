@@ -9,6 +9,8 @@ export async function handleGeneratedNewShortUrl(req, res) {
   const shortID = shortid();
   let count;
 
+  const path = `${req.protocol}://${req.get("host")}/url`;
+
   if (tempUserId) {
     count = await Url.countDocuments({
       tempUserId,
@@ -27,9 +29,7 @@ export async function handleGeneratedNewShortUrl(req, res) {
       tempUserId,
     });
 
-    const path = `${req.protocol}://${req.get("host")}/url`;
-
-    return res.render("home", { id: shortID, path: path });
+    return res.render("home", { id: shortID, path });
   }
 
   await Url.create({
@@ -40,7 +40,7 @@ export async function handleGeneratedNewShortUrl(req, res) {
     tempUserId: null,
   });
 
-  return res.render("home", { id: shortID, path: path });
+  return res.render("home", { id: shortID, path });
 }
 
 export async function handleShortIdAnalytics(req, res) {
