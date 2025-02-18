@@ -40,7 +40,7 @@ export async function handleGeneratedNewShortUrl(req, res) {
     tempUserId: null,
   });
 
-  return res.render("home", { id: shortID, port: process.env.PORT });
+  return res.render("home", { id: shortID, path: path });
 }
 
 export async function handleShortIdAnalytics(req, res) {
