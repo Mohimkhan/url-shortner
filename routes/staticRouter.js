@@ -34,6 +34,12 @@ router.get("/", async (req, res) => {
   const tempUserId = req.cookies?.[`${appName}-tempUserId`];
 
   if (!userId) {
+    if (!tempUserId) {
+      return res.render("home", {
+        urls: [],
+      });
+    }
+
     const urls = await Url.find({ tempUserId });
 
     return res.render("home", {
